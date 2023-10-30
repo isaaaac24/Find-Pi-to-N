@@ -7,6 +7,7 @@ class Program
 {
     const string filePath = "Resources/pi.txt";
     const int maxDigits = 1000;
+    const int minDigits = 1;
 
     static void Main(string[] args)
     {
@@ -21,7 +22,7 @@ class Program
         {
             Console.WriteLine("Enter the number of digits to calculate pi to: ");
             int requiredDigits = int.Parse(Console.ReadLine());
-            if (requiredDigits <= maxDigits)
+            if (requiredDigits <= maxDigits && requiredDigits > minDigits)
             {
                 return requiredDigits;
             }  
