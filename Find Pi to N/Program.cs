@@ -15,7 +15,7 @@ class Program
     {
         int requiredDigits = GetDigitCount();
         string piDigits = ReadPiDigits(requiredDigits);
-        Console.WriteLine($"3.{piDigits.ToString()}");
+        Console.WriteLine($"3.{piDigits}");
     }
 
     // Takes user input to dictate number of decimal values of pi to print
@@ -60,11 +60,8 @@ class Program
                 // Reads each character from pi.txt until there are no more characters to read, or the amount of characters read has reached the amount required
                 while ((currentChar = reader.Read()) != -1 && digitCount < requiredDigits)
                 {
-                    if (Char.IsDigit((char)currentChar))
-                    {
-                        digits.Append((char)currentChar);
-                        digitCount++;
-                    }
+                    digits.Append((char)currentChar);
+                    digitCount++;
                 }
             }
         }
