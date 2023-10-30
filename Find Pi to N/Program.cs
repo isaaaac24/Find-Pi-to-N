@@ -27,6 +27,6 @@ class Program
 
         }
 
-        Console.WriteLine(digits.ToString());
+        Console.WriteLine("3." + digits.ToString());
     }
 }
