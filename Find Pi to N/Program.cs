@@ -21,14 +21,20 @@ class Program
         while (true)
         {
             Console.WriteLine("Enter the number of digits to calculate pi to: ");
-            int requiredDigits = int.Parse(Console.ReadLine());
-            if (requiredDigits <= maxDigits && requiredDigits > minDigits)
+            if (int.TryParse(Console.ReadLine(), out int requiredDigits))
             {
-                return requiredDigits;
-            }  
+                if (requiredDigits <= maxDigits && requiredDigits >= minDigits)
+                {
+                    return requiredDigits;
+                }
+                else
+                {
+                    Console.WriteLine("Please input a number between 1 and 1000");
+                }
+            }
             else
             {
-                Console.WriteLine("Please input a number lower than 1000");
+                Console.WriteLine("Please input an integer");
             }
         }
     }
