@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 // Main program class
@@ -13,7 +12,7 @@ class Program
     {
         int requiredDigits = GetDigitCount();
         string piDigits = ReadPiDigits(requiredDigits);
-        Console.WriteLine("3." + piDigits.ToString());
+        Console.WriteLine($"3.{piDigits.ToString()}");
     }
 
     static int GetDigitCount()
@@ -29,7 +28,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("Please input a number between 1 and 1000");
+                    Console.WriteLine($"Please input a number between {minDigits} and {maxDigits}");
                 }
             }
             else
@@ -42,7 +41,6 @@ class Program
     static string ReadPiDigits(int requiredDigits)
     {
         int digitCount = 0;
-        string filePath = "Resources/pi.txt";
         StringBuilder digits = new StringBuilder();
 
         try
@@ -62,15 +60,15 @@ class Program
         }
         catch (FileNotFoundException)
         {
-            Console.WriteLine("pi.txt could not be found.");
+            Console.WriteLine("The file could not be found.");
         }
         catch (IOException)
         {
-            Console.WriteLine("An I/O error occured while readint the file");
+            Console.WriteLine("An I/O error occurred while reading the file");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"An unexpected error occured: {ex.Message}");
+            Console.WriteLine($"An unexpected error occurred: {ex.Message}");
         }
 
         return digits.ToString();
