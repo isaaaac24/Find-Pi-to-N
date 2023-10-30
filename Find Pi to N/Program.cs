@@ -38,18 +38,32 @@ class Program
         string filePath = "Resources/pi.txt";
         StringBuilder digits = new StringBuilder();
 
-        using (StreamReader reader = new StreamReader(filePath))
+        try
         {
-            int currentChar;
-            while ((currentChar = reader.Read()) != -1 && digitCount < requiredDigits)
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                if (Char.IsDigit((char)currentChar))
+                int currentChar;
+                while ((currentChar = reader.Read()) != -1 && digitCount < requiredDigits)
                 {
-                    digits.Append((char)currentChar);
-                    digitCount++;
+                    if (Char.IsDigit((char)currentChar))
+                    {
+                        digits.Append((char)currentChar);
+                        digitCount++;
+                    }
                 }
             }
-
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("pi.txt could not be found.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("An I/O error occured while readint the file");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An unexpected error occured: {ex.Message}");
         }
 
         return digits.ToString();
